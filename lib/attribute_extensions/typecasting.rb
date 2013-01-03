@@ -15,16 +15,8 @@ module AttributeExtensions
     end
 
     def typecaster_for(type)
-      type ||= :default
-
-      typecaster = {
-        boolean: Typecasting::BooleanTypecaster,
-        integer: Typecasting::IntegerTypecaster,
-        symbol:  Typecasting::SymbolTypecaster,
-        default: Typecasting::DefaultTypecaster
-      }[type]
-
-      typecaster.new
+      type = :default if type.nil?
+      "AttributeExtensions::Typecasting::#{type.to_s.camelize}Typecaster".constantize.new
     end
   end
 end
