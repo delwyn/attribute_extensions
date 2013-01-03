@@ -8,9 +8,9 @@ Gem::Specification.new do |gem|
   gem.version       = AttributeExtensions::VERSION
   gem.authors       = ["Delwyn de Villiers"]
   gem.email         = ["delwyn.d@gmail.com"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
-  gem.homepage      = ""
+  gem.description   = %q[Attribute Extenstions]
+  gem.summary       = %q[Define attributes with default values and typecasting]
+  gem.homepage      = "https://github.com/delwyn/attribute_extensions"
 
   gem.files         = `git ls-files`.split($/)
   gem.executables   = gem.files.grep(%r{^bin/}).map{ |f| File.basename(f) }
