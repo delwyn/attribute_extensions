@@ -1,5 +1,7 @@
-require "attribute_extensions/typecasting"
-require "attribute_extensions/version"
+require 'active_support/core_ext'
+
+require 'attribute_extensions/typecasting'
+require 'attribute_extensions/version'
 
 module AttributeExtensions
 
