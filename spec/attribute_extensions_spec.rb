@@ -9,7 +9,7 @@ describe AttributeExtensions do
         include AttributeExtensions
 
         attribute_reader :color
-        attribute_reader :make, default: nil
+        attribute_reader :make,   default: nil
         attribute_reader :gears,  default: 5
         attribute_reader :diesel, default: false
         attribute_reader :petrol, default: true
@@ -21,6 +21,12 @@ describe AttributeExtensions do
     its(:gears)  { should eq 5 }
     its(:diesel) { should be_false }
     its(:petrol) { should be_true }
+
+    it 'accepts multiple attributes' do
+      model.new.should_not respond_to(:foo, :bar)
+      model.attribute_reader :foo, :bar
+      model.new.should respond_to(:foo, :bar)
+    end
   end
 
   describe 'attribute_writer' do
@@ -37,6 +43,12 @@ describe AttributeExtensions do
         attr_reader :color, :make, :doors, :tires, :diesel
       end
     }
+
+    it 'accepts multiple attributes' do
+      model.new.should_not respond_to(:foo=, :bar=)
+      model.attribute_writer :foo, :bar
+      model.new.should respond_to(:foo=, :bar=)
+    end
 
     it 'calls typecast with the value and type' do
       subject.class.should_receive(:typecast).with(1, :integer)
